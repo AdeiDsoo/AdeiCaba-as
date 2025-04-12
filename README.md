@@ -8,7 +8,7 @@
 6. inicializamos git
 7. creamos el primer commit
 8. conectamos nuestro repositorio con el repositorio en la nube (github u otro)
-9. hacemos el primer push
+9. hacemos el primer push.
 10. activamos el entorno virtual (`*`)
 
     ```shell
