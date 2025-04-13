@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from home.forms import CreateUser
-from home.models import User, Branch
+from home.models import User, Branch, Course
 
 
 
@@ -29,3 +29,7 @@ def users_list(request):
 def branch_list(request):
     branches = Branch.objects.all()
     return render(request, 'home/branch_list.html', {'branches': branches})
+
+def courses_list(request):
+    courses=Course.objects.all()
+    return render(request, 'home/courses_list.html', {'courses': courses})
