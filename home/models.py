@@ -10,3 +10,5 @@ class User(models.Model):
     def __str__(self):
         return f'{self.name} - {self.email} - {self.created_at} - {self.is_active}'
     
+
+    

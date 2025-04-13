@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from home.forms import CreateUser
 from home.models import User
 
-def index(request):
-    return render(request, 'home/index.html')
+
 
 def create_user(request):
     if request.method=="POST":
@@ -13,12 +12,16 @@ def create_user(request):
             info=userForm.cleaned_data
             info_user=User(name=info.get('name'), email=info.get('email'), is_active=info.get('is_active'))
             info_user.save()
-            return redirect('users_list')
+            return redirect('home:users_list')
     else:
         userForm=CreateUser()
 
     return render(request, 'home/create_user.html', {'userForm': userForm})
 
 def users_list(request):
-    users=User.objects.all()
+    search=request.GET.get("search", None)
+    if search:
+       users=User.objects.filter(email__icontains=search)
+    else:
+        users=User.objects.all()
     return render(request, 'home/users_list.html', {'users': users})

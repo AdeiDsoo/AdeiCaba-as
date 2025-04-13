@@ -10,7 +10,7 @@
     <body>
         <nav class="navbar navbar-expand-lg bg-light shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href= {% url "index" %}>PythonApp</a>
+                <a class="navbar-brand" href= {% url "Main:index" %}>PythonApp</a>
                 <button class="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
@@ -23,13 +23,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href= {% url "index" %}>Inicio</a>
+                            <a class="nav-link" href= {% url "Main:index" %}>Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href={% url "create_user" %}>Crear usuarios</a>
+                            <a class="nav-link" href={% url "home:create_user" %}>Crear usuarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href={% url "users_list" %}>Listado de usuarios</a>
+                            <a class="nav-link" href={% url "home:users_list" %}>Listado de usuarios</a>
                         </li>
                     </ul>
                 </div>
