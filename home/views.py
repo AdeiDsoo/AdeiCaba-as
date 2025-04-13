@@ -13,8 +13,12 @@ def create_user(request):
             info=userForm.cleaned_data
             info_user=User(name=info.get('name'), email=info.get('email'), is_active=info.get('is_active'))
             info_user.save()
-            return redirect('index')
+            return redirect('users_list')
     else:
         userForm=CreateUser()
 
     return render(request, 'home/create_user.html', {'userForm': userForm})
+
+def users_list(request):
+    users=User.objects.all()
+    return render(request, 'home/users_list.html', {'users': users})

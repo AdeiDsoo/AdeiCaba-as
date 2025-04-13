@@ -6,3 +6,7 @@ class User(models.Model):
     email = models.EmailField(_("email address"), unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.name} - {self.email} - {self.created_at} - {self.is_active}'
+    
