@@ -1,38 +1,29 @@
 {% extends "Main/base.html" %}
 {% block title %}
-    Lista de Usuarios - PythonApp
+    Lista de Sedes - PythonApp
 {% endblock title %}
 {% block content_title %}
-    Listado de usuarios
+    Listado de Sedes
 {% endblock content_title %}
 {% block content %}
-    <a href="{% url "home:create_user" %}"
-       class="btn btn-outline-primary rounded-pill px-4 mb-4">Crear usuario</a>
-    <form action= '{% url "home:users_list" %}' method="GET">
-        <input type='text'
-               name="search"
-               placeholder="Buscar..."
-               type="submit"
-               class="form-control mb-3">
-    </form>
-    {% if users %}
+    {% if branches %}
         <table class="table table-hover table-striped align-middle text-center">
             <thead class="table-light">
                 <tr>
                     <th>Nombre</th>
-                    <th>Email</th>
+                    <th>País</th>
                     <th>Creado</th>
                     <th>Activo</th>
                 </tr>
             </thead>
             <tbody>
-                {% for user in users %}
+                {% for branch in branches %}
                     <tr>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.created_at|date:"d M Y H:i" }}</td>
+                        <td>{{ branch.name }}</td>
+                        <td>{{ branch.email }}</td>
+                        <td>{{ branch.created_at|date:"d M Y H:i" }}</td>
                         <td>
-                            {% if user.is_active %}
+                            {% if branch.is_active %}
                                 <span class="badge bg-success">Sí</span>
                             {% else %}
                                 <span class="badge bg-danger">No</span>
@@ -43,6 +34,6 @@
             </tbody>
         </table>
     {% else %}
-        <div class="alert alert-warning text-center" role="alert">No hay usuarios registrados.</div>
+        <div class="alert alert-warning text-center" role="alert">No hay sedes registradas.</div>
     {% endif %}
 {% endblock content %}
