@@ -6,6 +6,8 @@
     Listado de Sedes
 {% endblock content_title %}
 {% block content %}
+<a href="{% url "home:create_branch" %}"
+       class="btn btn-outline-primary rounded-pill px-4 mb-4">Crear Sede</a>
     {% if branches %}
         <table class="table table-hover table-striped align-middle text-center">
             <thead class="table-light">
@@ -20,7 +22,7 @@
                 {% for branch in branches %}
                     <tr>
                         <td>{{ branch.name }}</td>
-                        <td>{{ branch.email }}</td>
+                        <td>{{ branch.country }}</td>
                         <td>{{ branch.created_at|date:"d M Y H:i" }}</td>
                         <td>
                             {% if branch.is_active %}

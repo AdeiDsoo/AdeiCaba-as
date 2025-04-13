@@ -1,0 +1,18 @@
+{% extends "Main/base.html" %}
+{% block title %}
+    Crear Sede - PythonApp
+{% endblock title %}
+{% block content_title %}
+    Crear Sede
+{% endblock content_title %}
+{% block content %}
+    <form action="{% url 'home:create_branch' %}" method="POST">
+        {% csrf_token %}
+        {{ branchForm.as_p }}
+        <input class="btn btn-outline-primary rounded-pill px-4"
+               type="submit"
+               value="Crear">
+        <a href="{% url 'Main:index' %}"
+           class="btn btn-outline-secondary rounded-pill px-4">Cancelar</a>
+    </form>
+{% endblock content %}
