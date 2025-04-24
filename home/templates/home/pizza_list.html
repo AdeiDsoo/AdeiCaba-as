@@ -3,19 +3,25 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Listado de Pizzas</title>
 	</head>
 	<body>
 		<nav>
 			<a href='{% url "index" %}'> Inicio</a>
-			<a href='{% url "create_pizza" %}'> Crear pizza</a>
-			<a href='{% url "pizza_list" %}'> Lista de pizzas</a>
+			<a href='{% url "pizza_list" %}'> Pizzas</a>
 		</nav>
 		<h1>Lista de pizzas de pizzas</h1>
+        <p>
+             <a href='{% url "create_pizza" %}'> Crear pizza</a>
+        </p>
 		{% if pizzas %}
 		<ul>
 			{% for pizza in pizzas %}
-			<li>{{ pizza.name }} - ${{ pizza.price }} - {{ pizza.size }}</li>
+			<li>
+				{{ pizza }} | <a href='{% url "detail_pizza" pizza.id %}'>Ver más</a>|
+				<a href='{% url "update_pizza" pizza.id %}'> Modificar</a>|
+				<a href='{% url "delete_pizza" pizza.id %}'> Eliminar</a>
+			</li>
 			{% endfor %}
 		</ul>
 		{% else %}

@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Pizzas</title>
+    <title>Pythonapp -pizzas</title>
 </head>
 <body>
     <nav>
+       <nav>
 			<a href='{% url "index" %}'> Inicio</a>
 			<a href='{% url "pizza_list" %}'> Pizzas</a>
 		</nav>
-    <h1>Creacion de pizzas</h1>
-    <form action="{% url 'create_pizza' %}" method="POST">
-        {% csrf_token %}
-        {{ formPizza }}
-        <input type="submit" value="Crear pizza"></input>
-
-    </form>
+    </nav>
+    <h1>{{ pizza }}</h1>
+    <p>{{ pizza.name }}</p>
+    <p>{{ pizza.size }}</p>
+     <p>{{ pizza.price }}</p>
+     <p>{{ pizza.date_created }}</p>
 </body>
 </html>

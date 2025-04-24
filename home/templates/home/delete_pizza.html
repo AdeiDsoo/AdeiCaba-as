@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Pizzas</title>
+    <title>Editar Pizzas</title>
 </head>
 <body>
-    <nav>
+   <nav>
 			<a href='{% url "index" %}'> Inicio</a>
 			<a href='{% url "pizza_list" %}'> Pizzas</a>
 		</nav>
-    <h1>Creacion de pizzas</h1>
-    <form action="{% url 'create_pizza' %}" method="POST">
+    <h1>Eliminar {{ pizza }}</h1>
+    <form action="{% url 'delete_pizza' pizza.id %}" method="POST">
         {% csrf_token %}
-        {{ formPizza }}
-        <input type="submit" value="Crear pizza"></input>
+       <p>Desea borrar esta pizza? </p>
+        <input type="submit" value="Confirma"></input>
 
     </form>
 </body>
