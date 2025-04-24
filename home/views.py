@@ -12,7 +12,8 @@ def create_pizza(request):
             pizza = Pizza(
                 name=info.get('name'),  
                 size=info.get('size'), 
-                price=info.get('price') 
+                price=info.get('price'),
+                date_created=info.get('date_created'), 
             )
             pizza.save()
             return redirect('index')
