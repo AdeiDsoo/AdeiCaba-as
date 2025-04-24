@@ -9,6 +9,7 @@
     <nav>
         <a href='{% url "index" %}'> Inicio</a>
          <a href='{% url "create_pizza" %}'> Crear pizza</a>
+         <a href='{% url "pizza_list" %}'> Lista de pizzas</a>
     </nav>
     <h1>Creacion de pizzas</h1>
     <form action="{% url 'create_pizza' %}" method="POST">

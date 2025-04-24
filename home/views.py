@@ -21,3 +21,7 @@ def create_pizza(request):
 
     return render(request, 'home/create_pizza.html', {'formPizza': formPizza})
 
+def pizza_list(request):
+    pizzas = Pizza.objects.all()
+    return render(request, 'home/pizza_list.html', {'pizzas': pizzas})
+
