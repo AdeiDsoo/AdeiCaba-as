@@ -10,6 +10,11 @@
 			<a href='{% url "index" %}'> Inicio</a>
 			<a href='{% url "pizza_list" %}'> Pizzas</a>
             <a href='{% url "login" %}'> Login</a>
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Cerrar sesion"></input>
+           
+            </form>
 		</nav>
 		<main class="py-5 container">
 			<h1 class="text-center">
