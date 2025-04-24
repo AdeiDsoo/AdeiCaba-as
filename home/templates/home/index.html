@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Pythonapp -pizzas</title>
-	</head>
-	<body>
-		<nav>
-			<a href='{% url "index" %}'> Inicio</a>
-			<a href='{% url "pizza_list" %}'> Pizzas</a>
-		</nav>
-		<h1>Bienvenides a mi app</h1>
-	</body>
-</html>
+{% extends "base.html" %} 
+{% block title %}Pizzas Pythonapp{% endblock title %}
+{% block content_title %}
+Bienvenides a mi app
+{% endblock content_title %} 
+{% block content %}
+<p>En esta app podras crear, editar y eliminar pizzas, con python y django</p>
+{% endblock content %}

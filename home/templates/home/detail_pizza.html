@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pythonapp -pizzas</title>
-</head>
-<body>
-    <nav>
-       <nav>
-			<a href='{% url "index" %}'> Inicio</a>
-			<a href='{% url "pizza_list" %}'> Pizzas</a>
-		</nav>
-    </nav>
-    <h1>{{ pizza }}</h1>
-    <p>{{ pizza.name }}</p>
+{% extends "base.html" %} 
+{% block title %}Detalles de la pizza{% endblock title %}
+{% block content_title %}
+{{ pizza }}
+{% endblock content_title %} 
+{% block content %}
+<p>{{ pizza.name }}</p>
     <p>{{ pizza.size }}</p>
      <p>{{ pizza.price }}</p>
      <p>{{ pizza.date_created }}</p>
-</body>
-</html>
+{% endblock content %}
+    

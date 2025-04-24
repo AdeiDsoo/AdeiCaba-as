@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Pizzas</title>
-</head>
-<body>
-   <nav>
-			<a href='{% url "index" %}'> Inicio</a>
-			<a href='{% url "pizza_list" %}'> Pizzas</a>
-		</nav>
-    <h1>Eliminar {{ pizza }}</h1>
-    <form action="{% url 'delete_pizza' pizza.id %}" method="POST">
+{% extends "base.html" %} 
+{% block title %}Eliminar Pizza{% endblock title %}
+{% block content_title %}
+Eliminar {{ pizza }}
+{% endblock content_title %} 
+{% block content %}
+<form action="{% url 'delete_pizza' pizza.id %}" method="POST">
         {% csrf_token %}
        <p>Desea borrar esta pizza? </p>
         <input type="submit" value="Confirma"></input>
 
     </form>
-</body>
-</html>
+{% endblock content %}

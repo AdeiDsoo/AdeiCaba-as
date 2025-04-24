@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Listado de Pizzas</title>
-	</head>
-	<body>
-		<nav>
-			<a href='{% url "index" %}'> Inicio</a>
-			<a href='{% url "pizza_list" %}'> Pizzas</a>
-		</nav>
-		<h1>Lista de pizzas de pizzas</h1>
-        <p>
+
+{% extends "base.html" %} 
+{% block title %}Lista de pizzas {% endblock title %}
+{% block content_title %}
+Lista de pizzas
+{% endblock content_title %} 
+{% block content %}
+<p>
              <a href='{% url "create_pizza" %}'> Crear pizza</a>
         </p>
 		{% if pizzas %}
@@ -27,5 +21,7 @@
 		{% else %}
 		<p>No hay pizzas disponibles</p>
 		{% endif %}
-	</body>
-</html>
+{% endblock content %}
+		
+        
+	
