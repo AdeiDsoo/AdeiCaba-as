@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block title %}Editar Perfil{% endblock title %}
+{% block content_title %}
+Editar Perfil
+{% endblock content_title %} 
+{% block content %}
+<form action="{% url 'edit_profile' %}" method="POST">
+        {% csrf_token %}
+        {{ formUser }}
+        <input type="submit" value="Editar Perfil"></input>
+    </form>
+{% endblock content %}
+    

@@ -3,9 +3,13 @@ from home.forms import PizzaForm
 from home.models import Pizza
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 def index(request):
     return render(request, 'home/index.html')
 
+@login_required
 def create_pizza(request):
     if request.method == 'POST':
         formPizza = PizzaForm(request.POST)
@@ -36,13 +40,13 @@ class ModelDetailPizza(DetailView):
     model = Pizza
     template_name = 'home/detail_pizza.html'
 
-class ViewUpdatePizza(UpdateView):
+class ViewUpdatePizza(LoginRequiredMixin, UpdateView):
     model = Pizza
     template_name = 'home/update_pizza.html'
     fields = ['name', 'size', 'price', 'date_created']
     success_url = reverse_lazy('pizza_list')
 
-class ViewDeletePizza(DeleteView):
+class ViewDeletePizza(LoginRequiredMixin, DeleteView):
     model = Pizza
     template_name = 'home/delete_pizza.html'
     success_url = reverse_lazy('pizza_list')
