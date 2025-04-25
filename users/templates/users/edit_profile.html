@@ -4,7 +4,7 @@
 Editar Perfil
 {% endblock content_title %} 
 {% block content %}
-<form action="{% url 'edit_profile' %}" method="POST">
+<form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ formUser }}
         <input type="submit" value="Editar Perfil"></input>

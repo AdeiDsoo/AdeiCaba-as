@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as django_login
 from users.forms import FormRegister, FormEditProfile
 from django.contrib.auth.decorators import login_required
+from users.models import InfoExtra
 
 def login(request):
     if request.method == 'POST':
@@ -10,6 +11,7 @@ def login(request):
         if formUser.is_valid():
             user = formUser.get_user()
             django_login(request, user)
+            InfoExtra.objects.get_or_create(user=user)
             return redirect('index')
     else:
         formUser = AuthenticationForm()
@@ -30,12 +32,17 @@ def register(request):
 
 @login_required
 def edit_profile(request):
+    infoextra = request.user.infoextra
     if request.method == 'POST':
-        formUser = FormEditProfile(request.POST, instance=request.user)
+        formUser = FormEditProfile(request.POST, request.FILES, instance=request.user)
         if formUser.is_valid():
+            avatar = formUser.cleaned_data.get('avatar')  
+            if avatar:  
+                infoextra.avatar = avatar  
+                infoextra.save() 
             formUser.save()
             return redirect('index')
     else:
-        formUser = FormEditProfile(instance=request.user)
+        formUser = FormEditProfile(initial={'avatar':infoextra.avatar} ,instance=request.user)
     
     return render(request, 'users/edit_profile.html', {'formUser': formUser})
