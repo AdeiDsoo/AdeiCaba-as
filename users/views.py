@@ -4,7 +4,8 @@ from django.contrib.auth import login as django_login
 from users.forms import FormRegister, FormEditProfile
 from django.contrib.auth.decorators import login_required
 from users.models import InfoExtra
-
+from django.views.generic import DetailView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 def login(request):
     if request.method == 'POST':
         formUser = AuthenticationForm(request, data=request.POST)
@@ -46,3 +47,9 @@ def edit_profile(request):
         formUser = FormEditProfile(initial={'avatar':infoextra.avatar} ,instance=request.user)
     
     return render(request, 'users/edit_profile.html', {'formUser': formUser})
+
+class ViewDetailProfile(DetailView):
+    model = InfoExtra
+    template_name = 'users/detail_profile.html'
+
+    
