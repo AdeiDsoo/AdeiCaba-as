@@ -1,13 +1,15 @@
-{% extends "base.html" %} 
-{% block title %}Registro{% endblock title %}
+{% extends "base.html" %}
+{% block title %}
+    Registro
+{% endblock title %}
 {% block content_title %}
-Registro
-{% endblock content_title %} 
+    Registro
+{% endblock content_title %}
 {% block content %}
-<form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'register' %}" method="POST">
         {% csrf_token %}
         {{ formUser }}
-        <input type="submit" value="Registrarse"></input>
-    </form>
+        <input type="submit" value="Registrarse">
+    </input>
+</form>
 {% endblock content %}
-    

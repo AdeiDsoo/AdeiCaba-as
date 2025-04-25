@@ -1,12 +1,13 @@
-{% extends "base.html" %} 
-{% block title %}Detalles de la pizza{% endblock title %}
+{% extends "base.html" %}
+{% block title %}
+    Detalles de la pizza
+{% endblock title %}
 {% block content_title %}
-{{ pizza }}
-{% endblock content_title %} 
+    {{ pizza }}
+{% endblock content_title %}
 {% block content %}
-<p>{{ pizza.name }}</p>
+    <p>{{ pizza.name }}</p>
     <p>{{ pizza.size }}</p>
-     <p>{{ pizza.price }}</p>
-     <p>{{ pizza.date_created }}</p>
+    <p>{{ pizza.price }}</p>
+    <p>{{ pizza.date_created }}</p>
 {% endblock content %}
-    

@@ -1,14 +1,15 @@
-{% extends "base.html" %} 
-{% block title %}Crear Pizzas{% endblock title %}
+{% extends "base.html" %}
+{% block title %}
+    Crear Pizzas
+{% endblock title %}
 {% block content_title %}
-Creacion de pizzas
-{% endblock content_title %} 
+    Creacion de pizzas
+{% endblock content_title %}
 {% block content %}
-<form action="{% url 'create_pizza' %}" method="POST">
+    <form action="{% url 'create_pizza' %}" method="POST">
         {% csrf_token %}
         {{ formPizza }}
-        <input type="submit" value="Crear pizza"></input>
-
-    </form>
+        <input type="submit" value="Crear pizza">
+    </input>
+</form>
 {% endblock content %}
-    

@@ -51,4 +51,5 @@ class ViewDeletePizza(LoginRequiredMixin, DeleteView):
     template_name = 'home/delete_pizza.html'
     success_url = reverse_lazy('pizza_list')
 
-    
+def about_me(request):
+    return render(request, 'home/about_me.html')
