@@ -5,7 +5,8 @@ from users.forms import FormRegister, FormEditProfile
 from django.contrib.auth.decorators import login_required
 from users.models import InfoExtra
 from django.views.generic import DetailView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
+
 def login(request):
     if request.method == 'POST':
         formUser = AuthenticationForm(request, data=request.POST)
@@ -51,5 +52,9 @@ def edit_profile(request):
 class ViewDetailProfile(DetailView):
     model = InfoExtra
     template_name = 'users/detail_profile.html'
+    def get_object(self):
+       
+        user_id = self.kwargs['pk']
+        return get_object_or_404(InfoExtra, user__id=user_id)
 
     

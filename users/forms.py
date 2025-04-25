@@ -7,9 +7,10 @@ class FormRegister(UserCreationForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput, required=True)
     password2 = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput, required=True)
     username = forms.CharField(max_length=30, required=True)
+    hobbies = forms.CharField(label='Hobbies', required=False, widget=forms.Textarea)
 class Meta:
     model=User
-    fields = ( 'username', 'email', 'password1', 'password2')
+    fields = ( 'username', 'email', 'password1', 'password2', 'hobbies')
     help_texts = {key:'' for key in fields}
 
 class FormEditProfile(forms.ModelForm):
@@ -18,8 +19,9 @@ class FormEditProfile(forms.ModelForm):
     first_name= forms.CharField(label='Nombre')
     last_name= forms.CharField(label='Apellido')
     avatar= forms.ImageField(required=False)
+    hobbies= forms.CharField(label='Hobbies', required=False, widget=forms.Textarea)
 
     class Meta:
         model= User
-        fields= ('email', 'first_name', 'last_name', 'avatar')
+        fields= ('email', 'first_name', 'last_name', 'avatar', 'hobbies')
         
