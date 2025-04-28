@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>PythonApp- Pizzas |
@@ -18,18 +18,18 @@
                 crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-              rel="stylesheet"
-              type="text/css" />
+            rel="stylesheet"
+            type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-              rel="stylesheet"
-              type="text/css" />
+            rel="stylesheet"
+            type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}"  rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
-             id="mainNav">
+            id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
@@ -46,28 +46,28 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1">
                             <a class="nav-link py-3 px-0 px-lg-3 rounded"
-                               href="{% url 'about_me' %}">Sobre mí</a>
+                            href="{% url 'about_me' %}">Sobre mí</a>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1">
                             <a class="nav-link py-3 px-0 px-lg-3 rounded"
-                               href="{% url 'pizza_list' %}">Pizzas</a>
+                            href="{% url 'pizza_list' %}">Pizzas</a>
                         </li>
                         {% if request.user.is_authenticated %}
                             <li class="nav-item mx-0 mx-lg-1">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                   href="{% url 'edit_profile' %}"> {{ request.user.username }}
+                                href="{% url 'edit_profile' %}"> {{ request.user.username }}
                                     {% if request.user.infoextra.avatar %}
                                         <img src="{{ request.user.infoextra.avatar.url }}"
-                                             width="50px"
-                                             height="50px"
-                                             class="p-1"
-                                             alt="">
+                                            width="50px"
+                                            height="50px"
+                                            class="p-1"
+                                            alt="">
                                     {% else %}
                                     {% endif %}
                                 </li>
                                 <li class="nav-item mx-0 mx-lg-1">
                                     <a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                       href="{% url 'detail_profile' request.user.id %} ">Perfil</a>
+                                    href="{% url 'detail_profile' request.user.id %} ">Perfil</a>
                                 </li>
                                 <li class="nav-item mx-0 mx-lg-1">
                                     <form action="{% url 'logout' %}" method="POST" class="d-inline">
@@ -81,7 +81,7 @@
                                 </li>
                                 <li class="nav-item mx-0 mx-lg-1">
                                     <a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                       href="{% url 'register' %}">Registrarse</a>
+                                    href="{% url 'register' %}">Registrarse</a>
                                 </li>
                             {% endif %}
                         </ul>
@@ -122,10 +122,10 @@
             <!-- Portfolio Modals-->
             <!-- Portfolio Modal 1-->
             <div class="portfolio-modal modal fade"
-                 id="portfolioModal1"
-                 tabindex="-1"
-                 aria-labelledby="portfolioModal1"
-                 aria-hidden="true">
+                id="portfolioModal1"
+                tabindex="-1"
+                aria-labelledby="portfolioModal1"
+                aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header border-0">
@@ -150,8 +150,8 @@
                                         </div>
                                         <!-- Portfolio Modal - Image-->
                                         <img class="img-fluid rounded mb-5"
-                                             src="assets/img/portfolio/cabin.png"
-                                             alt="..." />
+                                            src="assets/img/portfolio/cabin.png"
+                                            alt="..." />
                                         <!-- Portfolio Modal - Text-->
                                         <p class="mb-4">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.

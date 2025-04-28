@@ -18,7 +18,6 @@ def login(request):
     else:
         formUser = AuthenticationForm()
     
- 
     return render(request, 'users/login.html', {'formUser': formUser})
 
 def register(request):
@@ -26,7 +25,7 @@ def register(request):
         formUser = FormRegister(request.POST, request.FILES)
         if formUser.is_valid():
             user = formUser.save(commit=False)  
-            user.email = formUser.cleaned_data.get('email')  
+            user.email = formUser.cleaned_data.get('email')  # Asigna el email al usuario
             user.save()
             hobbies = formUser.cleaned_data.get('hobbies')
             avatar = formUser.cleaned_data.get('avatar')
@@ -48,7 +47,6 @@ def edit_profile(request):
             hobbies = formUser.cleaned_data.get('hobbies')
             if avatar:  
                 infoextra.avatar = avatar  
-                 
             if hobbies:
                 infoextra.hobbies = hobbies
             infoextra.save()
@@ -63,8 +61,5 @@ class ViewDetailProfile(DetailView):
     model = InfoExtra
     template_name = 'users/detail_profile.html'
     def get_object(self):
-       
         user_id = self.kwargs['pk']
         return get_object_or_404(InfoExtra, user__id=user_id)
-
-    

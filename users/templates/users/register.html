@@ -7,8 +7,8 @@
 {% endblock content_title %}
 {% block content %}
     <form action="{% url 'register' %}"
-          method="POST"
-          enctype="multipart/form-data">
+        method="POST"
+        enctype="multipart/form-data">
         {% csrf_token %}
         {{ formUser }}
         <input type="submit" value="Registrarse">
