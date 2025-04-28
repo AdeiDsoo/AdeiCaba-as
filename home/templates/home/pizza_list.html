@@ -11,16 +11,12 @@
     </p>
     {% if pizzas %}
         <ul>
-           
-            
             {% for pizza in pizzas %}
                 <li>
                     {{ pizza }} | <a href='{% url "detail_pizza" pizza.id %}'>Ver más</a>|
                     <a href='{% url "update_pizza" pizza.id %}'>Modificar</a>|
-                    <a href='{% url "delete_pizza" pizza.id %}'>Eliminar</a> | 
-                    {% if pizza.image %}
-                <img src="{{ pizza.image.url }}" alt="Pizza" width="70px" height="70px"/>
-            {% endif %}
+                    <a href='{% url "delete_pizza" pizza.id %}'>Eliminar</a> |
+                    {% if pizza.image %}<img src="{{ pizza.image.url }}" alt="Pizza" width="70px" height="70px" />{% endif %}
                 </li>
             {% endfor %}
         </ul>

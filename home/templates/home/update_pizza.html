@@ -6,7 +6,9 @@
     Modificar {{ pizza }}
 {% endblock content_title %}
 {% block content %}
-    <form action="{% url 'update_pizza' pizza.id %}" method="POST">
+    <form action="{% url 'update_pizza' pizza.id %}"
+          enctype="multipart/form-data"
+          method="POST">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Modificar pizza">

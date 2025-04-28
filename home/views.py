@@ -44,7 +44,7 @@ class ModelDetailPizza(DetailView):
 class ViewUpdatePizza(LoginRequiredMixin, UpdateView):
     model = Pizza
     template_name = 'home/update_pizza.html'
-    fields = ['name', 'size', 'price', 'date_created']
+    fields = ['name', 'size', 'price', 'date_created', 'image']
     success_url = reverse_lazy('pizza_list')
 
 class ViewDeletePizza(LoginRequiredMixin, DeleteView):
