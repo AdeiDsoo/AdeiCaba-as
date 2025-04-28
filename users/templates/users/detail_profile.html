@@ -20,5 +20,7 @@
 {% if user.infoextra.avatar %}
     <p>Avatar: <img src="{{user.infoextra.avatar.url}}" alt="Avatar" width="100px" height="100px"/></p>
 {% endif %}
-
+{% if user.infoextra.hobbies %}
+    <p>Hobbies: {{user.infoextra.hobbies}} </p>
+{% endif %}
 {% endblock content %}

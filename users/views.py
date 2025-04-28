@@ -23,9 +23,14 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        formUser = FormRegister(request.POST)
+        formUser = FormRegister(request.POST, request.FILES)
         if formUser.is_valid():
-            formUser.save()
+            user = formUser.save(commit=False)  
+            user.email = formUser.cleaned_data.get('email')  
+            user.save()
+            hobbies = formUser.cleaned_data.get('hobbies')
+            avatar = formUser.cleaned_data.get('avatar')
+            InfoExtra.objects.create(user=user,hobbies=hobbies, avatar=avatar)
             return redirect('login')
     else:
         formUser = FormRegister()
@@ -38,14 +43,19 @@ def edit_profile(request):
     if request.method == 'POST':
         formUser = FormEditProfile(request.POST, request.FILES, instance=request.user)
         if formUser.is_valid():
+            formUser.save()
             avatar = formUser.cleaned_data.get('avatar')  
+            hobbies = formUser.cleaned_data.get('hobbies')
             if avatar:  
                 infoextra.avatar = avatar  
-                infoextra.save() 
-            formUser.save()
+                 
+            if hobbies:
+                infoextra.hobbies = hobbies
+            infoextra.save()
+            
             return redirect('index')
     else:
-        formUser = FormEditProfile(initial={'avatar':infoextra.avatar} ,instance=request.user)
+        formUser = FormEditProfile(initial={'avatar':infoextra.avatar, 'hobbies': infoextra.hobbies} ,instance=request.user)
     
     return render(request, 'users/edit_profile.html', {'formUser': formUser})
 

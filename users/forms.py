@@ -3,14 +3,15 @@ from django import forms
 from django.contrib.auth.models import User
 
 class FormRegister(UserCreationForm):
-    email = forms.EmailField()
+    email = forms.EmailField(required=True)
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput, required=True)
     password2 = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput, required=True)
     username = forms.CharField(max_length=30, required=True)
     hobbies = forms.CharField(label='Hobbies', required=False, widget=forms.Textarea)
+    avatar = forms.ImageField(label='Avatar', required=False)
 class Meta:
     model=User
-    fields = ( 'username', 'email', 'password1', 'password2', 'hobbies')
+    fields = ( 'username', 'email', 'password1', 'password2', 'hobbies', 'avatar')
     help_texts = {key:'' for key in fields}
 
 class FormEditProfile(forms.ModelForm):
