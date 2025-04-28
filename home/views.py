@@ -12,7 +12,7 @@ def index(request):
 @login_required
 def create_pizza(request):
     if request.method == 'POST':
-        formPizza = PizzaForm(request.POST)
+        formPizza = PizzaForm(request.POST, request.FILES)
         if formPizza.is_valid():
             info = formPizza.cleaned_data
             pizza = Pizza(
@@ -20,6 +20,7 @@ def create_pizza(request):
                 size=info.get('size'), 
                 price=info.get('price'),
                 date_created=info.get('date_created'), 
+                image=info.get('image')
             )
             pizza.save()
             return redirect('index')
