@@ -25,7 +25,7 @@ def register(request):
         formUser = FormRegister(request.POST, request.FILES)
         if formUser.is_valid():
             user = formUser.save(commit=False)  
-            user.email = formUser.cleaned_data.get('email')  # Asigna el email al usuario
+            user.email = formUser.cleaned_data.get('email')  
             user.save()
             hobbies = formUser.cleaned_data.get('hobbies')
             avatar = formUser.cleaned_data.get('avatar')
