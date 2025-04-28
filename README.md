@@ -1,6 +1,6 @@
 # PythonApp- Adei Dsoo Cabañas González
 0. Video
-[![Video PythonApp-Pizza](/media/image/Pythonapp-Pizzas.png)](https://www.loom.com/embed/1c9ec2c9231d4cdab1d88cace0c11f9c?sid=0c2437de-c328-48bf-a7c5-b1c1f7ef73ef)
+[![Video PythonApp-Pizza](https://github.com/user-attachments/assets/df559411-4700-4ddf-a809-244cadb7e568)](https://www.loom.com/embed/1c9ec2c9231d4cdab1d88cace0c11f9c?sid=0c2437de-c328-48bf-a7c5-b1c1f7ef73ef)
 
 1. Inicia con una pantalla de bienvenida con un navbar con 5 botones; del lado izquierdo esta el boton de inicio que te regresa al home.
 2. del lado derecho estan, en orden de aparecion de derecha a izquierda, boton about me, pizzas, iniciar sesión y registrarse.
