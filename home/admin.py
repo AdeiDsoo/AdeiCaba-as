@@ -1,9 +1,10 @@
 from django.contrib import admin
-from .models import User
+from home.models import Pizza
 
-# admin.site.register(User)
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display=["name", "email", "created_at", "is_active"]
-    list_filter=["is_active", "name"]
-    ordering=["-created_at"]
+# admin.site.register(Pizza)
+
+@admin.register(Pizza)
+class PizzaAdmin(admin.ModelAdmin):
+    list_display=["name", "size", "price", "date_created"]
+    list_filter=["size"]
+    ordering=["-date_created"]

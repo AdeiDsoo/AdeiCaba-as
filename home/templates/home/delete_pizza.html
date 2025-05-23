@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+    Eliminar Pizza
+{% endblock title %}
+{% block content_title %}
+    Eliminar {{ pizza }}
+{% endblock content_title %}
+{% block content %}
+    <form action="{% url 'delete_pizza' pizza.id %}" method="POST">
+        {% csrf_token %}
+        <p>Desea borrar esta pizza?</p>
+        <input type="submit" value="Confirma">
+    </input>
+</form>
+{% endblock content %}

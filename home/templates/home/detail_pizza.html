@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    Detalles de la pizza
+{% endblock title %}
+{% block content_title %}
+    {{ pizza }}
+{% endblock content_title %}
+{% block content %}
+    <p>{{ pizza.name }}</p>
+    <p>{{ pizza.size }}</p>
+    <p>{{ pizza.price }}</p>
+    <p>{{ pizza.date_created }}</p>
+    {% if pizza.image %}<img src="{{ pizza.image.url }}" alt="Pizza" width="100px" height="100px" />{% endif %}
+{% endblock content %}

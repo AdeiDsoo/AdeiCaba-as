@@ -1,7 +1,15 @@
 from django import forms
-from django.utils.translation import gettext_lazy as _
 
-class CreateUser(forms.Form):
-    name= forms.CharField(max_length=20)
-    email = forms.EmailField(label=_("Email address"))
-    is_active = forms.BooleanField(initial=True, required=False)
+class PizzaForm(forms.Form):
+    name = forms.CharField(max_length=30, required=True)
+    size = forms.ChoiceField(choices=[('S', 'Small'), ('M', 'Medium'), ('L', 'Large'), ('XL', 'Extralarge')], required=True)
+    price = forms.DecimalField(max_digits=5, decimal_places=2, required=True)
+    date_created = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    image = forms.ImageField(required=False)
+
+    class Meta:
+        fields = ['name', 'size', 'price', 'date_created', 'image']
+      
+
+
+

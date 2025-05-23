@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Sobre mí
+{% endblock title %}
+{% block content_title %}
+    Sobre el creador de Pythonapp-pizzas
+{% endblock content_title %}
+{% block content %}
+    <section class="container d-flex justify-content-center align-items-center flex-column ">
+        <div class=" col-4">
+            <img src="{% static 'assets/img/portfolio/michiPizza.jpg' %}"
+                alt="michiPizza"
+                class="img-fluid">
+        </div>
+        <div class="col-8 pt-5">
+            <p>
+                Prrr!! Soy Michi Quimichi y me dedico a hacer que mi esclavo humano haga aplicaciones en mi tiempo libre. Como soy el dueño de sus quincenas me dedico esta aplicación que dice que aprendio con un nuevo lenguaje que se llama Python.
+            </p>
+            <p>Yo solo quiero que me alimente con Pizzas!!! y que me compren pizzas para tener mas dinero para comprar comida</p>
+            <p>No olviden seguir adoptando y arriba el Home office!!!</p>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+    Lista de pizzas
+{% endblock title %}
+{% block content_title %}
+    Lista de pizzas
+{% endblock content_title %}
+{% block content %}
+    <p>
+        <a href='{% url "create_pizza" %}' enctype="multipart/form-data">Crear pizza</a>
+    </p>
+    {% if pizzas %}
+        <ul>
+            {% for pizza in pizzas %}
+                <li>
+                    {{ pizza }} | <a href='{% url "detail_pizza" pizza.id %}'>Ver más</a>|
+                    <a href='{% url "update_pizza" pizza.id %}'>Modificar</a>|
+                    <a href='{% url "delete_pizza" pizza.id %}'>Eliminar</a> |
+                    {% if pizza.image %}<img src="{{ pizza.image.url }}" alt="Pizza" width="70px" height="70px" />{% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay pizzas disponibles</p>
+    {% endif %}
+{% endblock content %}

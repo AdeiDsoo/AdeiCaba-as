@@ -1,27 +1,56 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from home.forms import CreateUser
-from home.models import User
+from home.forms import PizzaForm
+from home.models import Pizza
+from django.views.generic import DetailView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
+def index(request):
+    return render(request, 'home/index.html')
 
-
-def create_user(request):
-    if request.method=="POST":
-        userForm=CreateUser(request.POST)
-        if userForm.is_valid():
-            info=userForm.cleaned_data
-            info_user=User(name=info.get('name'), email=info.get('email'), is_active=info.get('is_active'))
-            info_user.save()
-            return redirect('home:users_list')
+@login_required
+def create_pizza(request):
+    if request.method == 'POST':
+        formPizza = PizzaForm(request.POST, request.FILES)
+        if formPizza.is_valid():
+            info = formPizza.cleaned_data
+            pizza = Pizza(
+                name=info.get('name'),  
+                size=info.get('size'), 
+                price=info.get('price'),
+                date_created=info.get('date_created'), 
+                image=info.get('image')
+            )
+            pizza.save()
+            return redirect('index')
     else:
-        userForm=CreateUser()
+        formPizza = PizzaForm()
 
-    return render(request, 'home/create_user.html', {'userForm': userForm})
+    return render(request, 'home/create_pizza.html', {'formPizza': formPizza})
 
-def users_list(request):
-    search=request.GET.get("search", None)
-    if search:
-       users=User.objects.filter(email__icontains=search)
-    else:
-        users=User.objects.all()
-    return render(request, 'home/users_list.html', {'users': users})
+def pizza_list(request):
+    pizzas = Pizza.objects.all()
+    return render(request, 'home/pizza_list.html', {'pizzas': pizzas})
+
+def detail_pizza(request, idPizza):
+    pizza = Pizza.objects.get(id=idPizza)
+    return render(request, 'home/detail_pizza.html', {'pizza': pizza})
+
+class ModelDetailPizza(DetailView):
+    model = Pizza
+    template_name = 'home/detail_pizza.html'
+
+class ViewUpdatePizza(LoginRequiredMixin, UpdateView):
+    model = Pizza
+    template_name = 'home/update_pizza.html'
+    fields = ['name', 'size', 'price', 'date_created', 'image']
+    success_url = reverse_lazy('pizza_list')
+
+class ViewDeletePizza(LoginRequiredMixin, DeleteView):
+    model = Pizza
+    template_name = 'home/delete_pizza.html'
+    success_url = reverse_lazy('pizza_list')
+
+def about_me(request):
+    return render(request, 'home/about_me.html')
